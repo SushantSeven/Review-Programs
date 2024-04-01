@@ -2,22 +2,12 @@
 # o/p : [ 1 , 77 , 22 , 4 , 5 , 11, 38 , 9 , 44 ]
 
 arr = input().split()
-arr2 = list()
+result_arr = list()
 
-if len(arr)%4 == 0:
-    for i in range(0,len(arr)-1,4):
-        arr2.append(arr[i+2])
-        arr2.append(arr[i+3])
-        arr2.append(arr[i])
-        arr2.append(arr[i+1])
+for i in range(0, len(arr) - len(arr) % 4, 4):
+    result_arr.extend(arr[i+2:i+4])  # Append the 3rd and 4th elements
+    result_arr.extend(arr[i:i+2])    # Append the 1st and 2nd elements
 
-else:
-    for i in range(0,len(arr)-len(arr)%4,4):
-            arr2.append(arr[i+2])
-            arr2.append(arr[i+3])
-            arr2.append(arr[i])
-            arr2.append(arr[i+1])
-    for i in range(len(arr2), len(arr)):
-            arr2.append(arr[i])
+result_arr.extend(arr[len(arr) - len(arr) % 4:])
 
-print(*arr2)
+print(*result_arr)
